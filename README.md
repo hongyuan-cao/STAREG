@@ -4,7 +4,7 @@ Spatial transcriptomic analysis of replicable expressed genes
 
 ## Overview
 
-STAREG implements an FDR control procedure for replicability analysis of large-scale multiple testing. The framework is built for the replicability analysis of spatial variable gene (SVG) detection in spatial transcriptomic (SRT) data,  and is scalable for a wide range of other applications. Following the optimal rejection rule based on local FDR, we estimate the joint local FDR based on the replicability null hypotheses with a robust EM algorithm, and then use the estimated local FDR as test statistics to achieve effective FDR control. The inputs of STAREG are simply the $p$-values resulted from two replicated studies for the same hypotheses.
+STAREG is an empirical Bayesian method for identifying replicable spatially variable genes in data generated from various spatially resolved transcriptomic techniques. It provides effective control of false discovery rate and higher power for the replicability analysis by borrowing information across genes and across different studies, and is scalable to datasets with tens of thousands of genes measured on tens of thousands of spatial locations.
 
 ## Installation
 
@@ -42,7 +42,7 @@ states2 = data.obj$states2
 ## Replicability analysis
 library(STAREG)
 alpha <- 0.05
-rep.obj <- STAREG(pvals1, pvals2)
+rep.obj <- STAREG(pvals1, pvals2, est.pi0 = TRUE)
 rep.genes <- which(res.obj$fdr.rep <= alpha)
 ```
 
