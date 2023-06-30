@@ -1,12 +1,11 @@
 Package: STAREG
 Type: Package
-Title: A replicability analysis procedure for spatial transcriptomic analysis providing FDR control
-Version: 1.0
-Data: 2022-11-05
-Author: Yan Li, Hongyuan Cao
-Maintainer: Yan Li <yanli_@jlu.edu.cn>
-Description: This package implements a scalable and tuning parameter-free FDR control procedure for replicability analysis of large-scale multiple testing from SVG detection studies. The procedure takes the joint local FDR based on replicability null hypothesis as the test statistic and develops a robust EM algorithm to estimate the test statistic.
-Depends: R (>= 4.1.0), qvalue, Iso
-License: GPL-2
+Title: An Empirical Bayes Approach for Replicability Analysis Across Two Studies
+Version: 1.0.2
+Authors@R: c(person("Yan Li", role = c("aut", "cre", "cph"), email = "yanli_@jlu.edu.cn"), person("Xiang Zhou", role = c("aut")), person("Rui Chen", role = c("aut")), person("Xianyang Zhang", role = c("aut")), person("Hongyuan Cao", role = c("aut", "ctb")))
+Description: A robust and powerful empirical Bayesian approach is developed for replicability analysis of two large-scale experimental studies. The method controls the false discovery rate by using the joint local false discovery rate based on the replicability null as the test statistic. An EM algorithm combined with a shape constraint nonparametric method is used to estimate unknown parameters and functions. [Li, Y. et al., (2023), <https://www.biorxiv.org/content/10.1101/2023.05.30.542607v1>].
+License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+LazyData: true
+Depends: Rcpp (>= 1.0.9), qvalue
+LinkingTo: Rcpp, RcppArmadillo

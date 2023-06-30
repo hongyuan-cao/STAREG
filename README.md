@@ -42,8 +42,8 @@ states2 = data.obj$states2
 ## Replicability analysis
 library(STAREG)
 alpha <- 0.05
-rep.obj <- STAREG(pvals1, pvals2, est.pi0 = TRUE)
-rep.genes <- which(res.obj$fdr.rep <= alpha)
+rep.obj <- stareg(pvals1, pvals2)
+rep.genes <- which(res.obj$fdr <= alpha)
 ```
 
 ## Data and reproducibility
