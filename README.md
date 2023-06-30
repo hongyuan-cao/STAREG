@@ -18,7 +18,7 @@ install.packages(c("Iso"))
 ## Install STAREG
 install.packages("devtools")
 devtools::install_github("YanLi15/STAREG")
-# An alternative approach
+# An alternative installation method
 install.packages("STAREG")
 
 ## Load STAREG
@@ -35,17 +35,23 @@ m = 10000; xi00 = 0.9; xi01 = 0.025; xi10 = 0.025; xi11 = 0.05
 mu1 = 2; mu2 = 2.5; sigma1 = 1; sigma2 = 1
 
 ## Generate the hidden states and corresponding p-values in two studies 
-data.obj <- data_generation(m, xi00, xi01, xi10, xi11, mu1, mu2, sigma1, sigma2)
-p1 = data.obj$pvals1
-p2 = data.obj$pvals2
-states1 = data.obj$states1
-states2 = data.obj$states2
+h = sample(0:3, m, replace = TRUE, prob = c(xi00, xi01, xi10, xi11))
+states1 = rep(0, m)
+states1[c(which(h==2), which(h==3))] = 1
+states2 = rep(0, m)
+states2[c(which(h==1), which(h==3))] = 1
+
+stat1 = rnorm(m, states1*mu1, sigma1)
+stat2 = rnorm(m, states2*mu2, sigma2)
+
+p1 = 1 - pnorm(stat1, mean = 0, sd = sigma1)
+p2 = 1 - pnorm(stat2, mean = 0, sd = sigma2)
 
 ## Replicability analysis
 library(STAREG)
 alpha <- 0.05
-rep.obj <- stareg(pvals1, pvals2)
-rep.genes <- which(res.obj$fdr <= alpha)
+rep.obj <- stareg(p1, p2)
+rep.genes <- which(rep.obj$fdr <= alpha)
 ```
 
 ## Data and reproducibility
