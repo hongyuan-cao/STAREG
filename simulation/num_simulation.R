@@ -44,8 +44,8 @@ for(i in 1:n){
   pval.maxp <- p.adjust(maxp, method = "BH")
   
   # STAREG
-  res.rep <- STAREG(p1, p2, est.pi0 = TRUE)
-  pval.rep <- res.rep$fdr.rep
+  res.rep <- stareg(p1, p2)
+  pval.rep <- res.rep$fdr
   xi00.hat[i] <- res.rep$xi00
   xi01.hat[i] <- res.rep$xi01
   xi10.hat[i] <- res.rep$xi10
