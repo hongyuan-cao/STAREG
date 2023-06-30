@@ -37,9 +37,6 @@
 #' sig.idx = which(res.stareg$fdr <= 0.05)
 #'
 stareg <- function(pa, pb){
-  require(qvalue)
-  sourceCpp(./src/em_lfdr.cpp)
-
   pvals.cutoff = 1e-15
   pa[pa == 0] <- min(min(pa[pa != 0]), pvals.cutoff)
   pb[pb == 0] <- min(min(pb[pb != 0]), pvals.cutoff)
