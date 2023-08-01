@@ -1,6 +1,6 @@
 ############################################################################################
 # Package: STAREG
-# Version: 1.0.1
+# Version: 1.0.3
 # Data: 2023-05-31
 # Authors: Y. Li, X. Zhou, R. Chen, X. Zhang and H. Cao.
 ############################################################################################
@@ -8,6 +8,7 @@
 #'
 #' @param pa A numeric vector of p-values from study 1.
 #' @param pb A numeric vector of p-values from study 2.
+#' @param init.pi0 A logistic value for deciding whether to initialize the prior probabilities based on the estimates of pi0's. If true, estimate the marginal pi0's in two studies using qvalue; otherwise, specify pi0_pa = pi_pb = 0.9.
 #'
 #' @return A list:
 #' \item{Lfdr}{The estimated local false discovery rate for replicability null.}
