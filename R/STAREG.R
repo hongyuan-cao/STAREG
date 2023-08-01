@@ -44,7 +44,7 @@ stareg <- function(pa, pb, init.pi0 = TRUE){
   pi0_pa <- min(pi0est(pa)$pi0, 0.999)
   pi0_pb <- min(pi0est(pb)$pi0, 0.999)
 
-  if(init.pi0 = TRUE) res <- em_lfdr(pa, pb, pi0_pa, pi0_pb)
+  if(init.pi0 == TRUE) res <- em_lfdr(pa, pb, pi0_pa, pi0_pb)
   else res <- em_lfdr(pa, pb, 0.9, 0.9)
 
   return(res)
