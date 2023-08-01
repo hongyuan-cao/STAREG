@@ -36,7 +36,7 @@
 #' res.stareg = stareg(p1, p2)
 #' sig.idx = which(res.stareg$fdr <= 0.05)
 #'
-stareg <- function(pa, pb){
+stareg <- function(pa, pb, init.pi0 = TRUE){
   pvals.cutoff = 1e-15
   pa[pa == 0] <- min(min(pa[pa != 0]), pvals.cutoff)
   pb[pb == 0] <- min(min(pb[pb != 0]), pvals.cutoff)
@@ -44,7 +44,8 @@ stareg <- function(pa, pb){
   pi0_pa <- min(pi0est(pa)$pi0, 0.999)
   pi0_pb <- min(pi0est(pb)$pi0, 0.999)
 
-  res <- em_lfdr(pa, pb, pi0_pa, pi0_pb)
+  if(init.pi0 = TRUE) res <- em_lfdr(pa, pb, pi0_pa, pi0_pb)
+  else res <- em_lfdr(pa, pb, 0.9, 0.9)
 
   return(res)
 }
